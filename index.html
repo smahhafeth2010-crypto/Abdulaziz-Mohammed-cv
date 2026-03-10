@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السيرة الذاتية | عبد العزيز حفظ الله</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ================== Theme ================== */
+:root{
+  --bg:#eef2f7;
+  --card:#ffffff;
+  --primary:#004aad;
+  --secondary:#0ea5e9;
+  --text:#1e293b;
+  --muted:#475569;
+  --radius:26px;
+  --shadow:0 18px 40px rgba(0,0,0,.12);
+}
+
+body.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --primary:#38bdf8;
+  --secondary:#0ea5e9;
+  --text:#e2e8f0;
+  --muted:#94a3b8;
+  --shadow:0 18px 40px rgba(255,255,255,.08);
+}
+
+html { scroll-behavior: smooth; }
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  transition:.4s;
+}
+
+/* ================== Animations ================== */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* ================== Navbar ================== */
+nav{
+  position:sticky;top:0;z-index:1000;
+  background:var(--primary);
+  box-shadow:0 4px 14px rgba(0,0,0,.25)
+}
+nav ul{
+  display:flex;justify-content:center;
+  gap:18px;list-style:none;padding:14px;flex-wrap:wrap
+}
+nav a{
+  color:#fff;text-decoration:none;
+  padding:10px 18px;border-radius:12px;
+  font-weight:700;transition:.3s
+}
+nav a:hover{
+  background:var(--secondary);
+  transform:scale(1.12)
+}
+
+/* ================== Floating Buttons ================== */
+.theme-btn,#topBtn{
+  position:fixed;
+  width:54px;height:54px;
+  border-radius:50%;
+  border:none;
+  background:var(--secondary);
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+  z-index:2000;
+  animation:float 3s infinite;
+}
+.theme-btn{top:20px;left:20px}
+#topBtn{bottom:20px;left:20px}
+.theme-btn:hover,#topBtn:hover{
+  transform:scale(1.2);
+  background:var(--primary);
+}
+
+/* ================== Header ================== */
+header{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  padding:100px 20px;
+  text-align:center;
+  color:#fff;
+  border-bottom-left-radius:40px;
+  border-bottom-right-radius:40px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+header img{
+  width:170px;height:170px;
+  border-radius:50%;
+  border:6px solid #fff;
+  object-fit:cover;
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+  animation:float 4s infinite;
+}
+header h1{
+  margin-top:18px;
+  font-size:42px;font-weight:900
+}
+.subtitle{font-size:20px;opacity:.9}
+
+/* ================== Sections ================== */
+.section{
+  max-width:1100px;
+  margin:55px auto;
+  padding:0 20px;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:45px;
+  box-shadow:var(--shadow);
+  border-top:6px solid var(--secondary);
+  transition:.4s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(0,0,0,.20);
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:25px;
+}
+.section-title i{
+  font-size:32px;
+  color:var(--secondary);
+}
+.inline-icon{
+  color:var(--secondary);
+  font-size:22px;
+}
+.info-icon{
+  color:var(--secondary);
+  font-size:22px;
+}
+.secondary-icon{
+  color:var(--secondary);
+  font-size:22px;
+}
+.section-title h2{
+  font-size:32px;
+  font-weight:900;
+  color:var(--primary);
+}
+
+.list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+.list div{
+  background:rgba(0,0,0,.05);
+  padding:18px;
+  border-radius:18px;
+  font-size:18px;
+  transition:.3s;
+  border:1px solid transparent;
+}
+.list div:hover{
+  background:linear-gradient(135deg,var(--secondary),var(--primary));
+  color:#fff;
+  border-color:#fff;
+  transform:scale(1.05);
+}
+
+/* ================== Certificates ================== */
+.cert-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+.cert-thumb{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.5s;
+  border:4px solid transparent;
+}
+.cert-thumb:hover{
+  transform:scale(1.15) rotate(1deg);
+  border-color:var(--secondary);
+  box-shadow:0 10px 40px rgba(0,0,0,.35);
+  filter:brightness(1.15);
+}
+
+/* ================== Modal ================== */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  z-index:3000;
+  animation:fadeIn .4s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+.modal img{
+  display:block;
+  max-width:90%;
+  max-height:85vh;
+  margin:80px auto;
+  border-radius:20px;
+  animation:zoomIn .4s ease;
+  box-shadow:0 0 25px rgba(255,255,255,.2);
+}
+@keyframes zoomIn{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.close{
+  position:absolute;top:25px;right:40px;
+  font-size:48px;color:#fff;
+  cursor:pointer;transition:.3s;
+}
+.close:hover{
+  transform:scale(1.2);
+  color:var(--secondary);
+}
+
+/* arrows */
+.nav-arrow{
+  position:absolute;
+  top:50%;
+  font-size:60px;
+  color:#fff;
+  cursor:pointer;
+  padding:10px;
+  -webkit-user-select:none;
+  user-select:none;
+  transition:.3s;
+}
+.nav-arrow:hover{
+  color:var(--secondary);
+  transform:scale(1.2);
+}
+.nav-arrow.left{left:40px}
+.nav-arrow.right{right:40px}
+
+/* counter */
+.counter{
+  position:absolute;
+  top:20px;
+  left:40px;
+  color:#fff;
+  font-size:22px;
+  background:rgba(0,0,0,.5);
+  padding:8px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+}
+
+/* ================== Footer ================== */
+footer{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:55px 20px;
+  margin-top:80px;
+}
+.footer-container{
+  max-width:1100px;
+  margin:auto;
+  text-align:center;
+}
+.social-box{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+.social{
+  width:120px;height:120px;
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  font-weight:700;
+  transition:.5s;
+  box-shadow:0 15px 30px rgba(0,0,0,.3);
+  position:relative;
+  overflow:hidden;
+}
+.social i{font-size:36px;margin-bottom:8px}
+.social span{font-size:14px;letter-spacing:1px}
+.social:hover{
+  transform:translateY(-12px) scale(1.08);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.whatsapp{background:#25D366}
+.facebook{background:#1877F2}
+.linkedin{background:#0A66C2}
+.github{background:#24292e}
+
+</style>
+</head>
+
+<body>
+
+<button class="theme-btn" onclick="toggleTheme()" title="تبديل المظهر الليلي"><i class="fas fa-moon"></i></button>
+<button id="topBtn" onclick="scrollToTop()" title="العودة للأعلى">↑</button>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="#about"><i class="fas fa-user"></i> من أنا</a></li>
+    <li><a href="#info"><i class="fas fa-id-card"></i> المعلومات</a></li>
+    <li><a href="#education"><i class="fas fa-graduation-cap"></i> المؤهلات</a></li>
+    <li><a href="#experience"><i class="fas fa-briefcase"></i> الخبرات</a></li>
+    <li><a href="#skills"><i class="fas fa-star"></i> المهارات</a></li>
+    <li><a href="#certificates"><i class="fas fa-certificate"></i> الشهادات</a></li>
+  </ul>
+</nav>
+
+<header>
+<img src="azeez.jpeg" alt="صورة عبد العزيز حفظ الله">
+<h1>عبد العزيز حفظ الله</h1>
+<div class="subtitle">كاتب حركة مخزون • منسق سلامة</div>
+</header>
+
+<div class="section" id="about">
+<div class="card">
+<div class="section-title"><i class="fas fa-user"></i><h2>من أنا</h2></div>
+<p>قائد متمرس في أعمال العقد الموحد بالشركة السعودية للكهرباء، بخبرة تمتد لأكثر من 20 عامًا في إدارة المواقع والإشراف على تنفيذ الأعمال الهوائية والأرضية، إضافة إلى مشاريع الصيانة والتعزيز والإحلال. متمكن من نظم UDS و SAP في إدارة وإصدار ومتابعة بطاقات الأمن الصناعي بكفاءة عالية، مع قدرة على التعامل مع الأنظمة التشغيلية وفق أعلى معايير الجودة.
+أمتلك خبرة قوية في السلامة والصحة المهنية منذ عام 2018، مع قدرة عالية على تطبيق معايير السلامة والإشراف على فرق العمل لضمان بيئة عمل آمنة ومنظمة، والحد من المخاطر التشغيلية في المواقع الميدانية، وتحسين إجراءات السلامة بما يتوافق مع متطلبات الأمن الصناعي.
+كما أمتلك معرفة جيدة في برمجة الويب (HTML وCSS وJavaScript) مما يعزز قدرتي على التعامل مع الأنظمة الرقمية وتطوير حلول تقنية بسيطة تدعم سير العمل وترفع من كفاءة العمليات التشغيلية.
+وأحمل شهادات مهنية معتمدة تشمل ISO 9001 في نظم إدارة الجودة، و ISO 45001 في نظم إدارة السلامة والصحة المهنية، و PMP في إدارة المشاريع الاحترافية، إضافة إلى شهادة NEBOSH، مما يعزز قدرتي على تحسين العمليات، ورفع كفاءة الأداء، وضمان جودة التنفيذ وفق المعايير العالمية في إدارة المشاريع والجودة والسلامة.
+</p>
+</div>
+</div>
+
+<div class="section" id="info">
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-id-card secondary-icon"></i>
+      <h2>المعلومات الشخصية</h2>
+    </div>
+
+    <div class="list">
+
+      <div>
+        <i class="fas fa-fingerprint info-icon"></i><br>
+        رقم الهوية<br>
+        <strong>2170380840</strong>
+      </div>
+
+      <div>
+        <i class="fas fa-phone info-icon"></i><br>
+        الهاتف<br>
+        <strong>0508098650</strong>
+      </div>
+
+      <div>
+        <i class="fas fa-envelope info-icon"></i><br>
+        البريد الإلكتروني<br>
+        <strong>smahhafeth2010@gmail.com</strong>
+      </div>
+
+      <div>
+        <i class="fas fa-location-dot inline-icon"></i><br>
+        الموقع<br>
+        <strong>شقراء – الرياض – المملكة العربية السعودية</strong>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="education">
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-graduation-cap"></i>
+      <h2>المؤهلات</h2>
+    </div>
+
+    <div class="list">
+
+      <div>
+        <i class="fas fa-bolt secondary-icon"></i><br>
+        دبلوم كهرباء عامة
+      </div>
+
+      <div>
+        <i class="fas fa-computer secondary-icon"></i><br>
+        دبلوم كمبيوتر
+      </div>
+
+      <div>
+        <i class="fas fa-shield-halved secondary-icon"></i><br>
+        NEBOSH – السلامة والصحة المهنية
+      </div>
+
+      <div>
+        <i class="fas fa-hard-hat secondary-icon"></i><br>
+        OSHA – السلامة المهنية
+      </div>
+
+      <div>
+        <i class="fas fa-certificate secondary-icon"></i><br>
+        ISO 9001 – نظام إدارة الجودة
+      </div>
+
+      <div>
+        <i class="fas fa-certificate secondary-icon"></i><br>
+        ISO 45001 – نظام إدارة السلامة والصحة المهنية
+      </div>
+
+      <div>
+        <i class="fas fa-diagram-project secondary-icon"></i><br>
+        PMP – إدارة المشاريع الاحترافية
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="experience">
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-briefcase"></i>
+      <h2>الخبرات</h2>
+    </div>
+
+    <div class="list">
+
+      <div>
+        <i class="fas fa-industry secondary-icon"></i><br>
+        شركة النملة<br>
+        <strong>(2001 – 2002)</strong>
+      </div>
+
+      <div>
+        <i class="fas fa-bolt secondary-icon"></i><br>
+        شركة برق العالمية<br>
+        <strong>(2002 – 2020)</strong>
+      </div>
+
+      <div>
+        <i class="fas fa-building secondary-icon"></i><br>
+        مجموعة سدر<br>
+        <strong>(2020 – الآن)</strong>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="skills">
+  <div class="card">
+    <div class="section-title">
+      <i class="fas fa-star"></i>
+      <h2>المهارات</h2>
+    </div>
+
+    <div class="list">
+
+      <div>
+        <i class="fas fa-boxes-stacked secondary-icon"></i><br>
+        إدارة المخزون
+      </div>
+
+      <div>
+        <i class="fas fa-file-excel secondary-icon"></i><br>
+        Microsoft Excel
+      </div>
+
+      <div>
+        <i class="fas fa-file-word secondary-icon"></i><br>
+        Microsoft Word
+      </div>
+
+      <div>
+        <i class="fas fa-triangle-exclamation secondary-icon"></i><br>
+        تقييم المخاطر
+      </div>
+
+      <div>
+        <i class="fas fa-shield-heart secondary-icon"></i><br>
+        إجراءات العمل الآمنة
+      </div>
+
+      <div>
+        <i class="fas fa-database secondary-icon"></i><br>
+        SAP – UDS
+      </div>
+
+      <div>
+        <i class="fas fa-code secondary-icon"></i><br>
+        HTML
+      </div>
+
+      <div>
+        <i class="fas fa-code secondary-icon"></i><br>
+        CSS
+      </div>
+
+      <div>
+        <i class="fas fa-code secondary-icon"></i><br>
+        JavaScript
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section" id="certificates">
+  <div class="card">
+
+    <div class="section-title">
+      <i class="fas fa-certificate"></i>
+      <h2>الشهادات</h2>
+    </div>
+
+    <div class="cert-gallery">
+
+      <div class="cert-item">
+        <img src="nebosh.jpg" loading="lazy" class="cert-thumb" alt="شهادة NEBOSH">
+        <p class="cert-label">NEBOSH</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="1234.png" loading="lazy" class="cert-thumb" alt="شهادة">
+        <p class="cert-label">شهادة تدريب</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="ISO 45001.png" loading="lazy" class="cert-thumb" alt="شهادة ISO 45001">
+        <p class="cert-label">ISO 45001</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="9001.jpeg" loading="lazy" class="cert-thumb" alt="شهادة ISO 9001">
+        <p class="cert-label">ISO 9001</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="risk assessment.png" loading="lazy" class="cert-thumb" alt="شهادة تقييم المخاطر">
+        <p class="cert-label">تقييم المخاطر</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="computer.jpg" loading="lazy" class="cert-thumb" alt="شهادة الكمبيوتر">
+        <p class="cert-label">دورة كمبيوتر</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="mmf.png" loading="lazy" class="cert-thumb" alt="شهادة">
+        <p class="cert-label">شهادة تدريب</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="safety.png" loading="lazy" class="cert-thumb" alt="شهادة السلامة">
+        <p class="cert-label">السلامة المهنية</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="Accidents.png" loading="lazy" class="cert-thumb" alt="شهادة الحوادث">
+        <p class="cert-label">التحقيق في الحوادث</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="distribution.png" loading="lazy" class="cert-thumb" alt="شهادة التوزيع">
+        <p class="cert-label">التوزيع الكهربائي</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="Thanks.png" loading="lazy" class="cert-thumb" alt="شهادة شكر">
+        <p class="cert-label">شهادة شكر</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="2170380840.png" loading="lazy" class="cert-thumb" alt="شهادة">
+        <p class="cert-label">شهادة تعريف</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="star.png" loading="lazy" class="cert-thumb" alt="شهادة">
+        <p class="cert-label">شهادة تميز</p>
+      </div>
+
+    
+      <div class="cert-item">
+        <img src="PMP.jpeg" loading="lazy" class="cert-thumb" alt="شهادة PMP">
+        <p class="cert-label">PMP</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="Infection control.jpg" loading="lazy" class="cert-thumb" alt="شهادة PMP">
+        <p class="cert-label">التحكم في العدوى</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+  
+  <!-- زر الإغلاق -->
+  <span class="close">&times;</span>
+
+  <!-- الأسهم -->
+  <span class="nav-arrow left" onclick="prevImg(event)">&#10094;</span>
+  <span class="nav-arrow right" onclick="nextImg(event)">&#10095;</span>
+
+  <!-- العداد -->
+  <div class="counter" id="counter">1 / 1</div>
+
+  <!-- الصورة -->
+  <img id="modalImg" alt="صورة الشهادة">
+
+</div>
+
+<footer>
+<div class="footer-container">
+<div class="social-box">
+<a href="https://wa.me/966508098650" class="social whatsapp"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
+<a href="https://www.facebook.com/share/1FynhwVkez/" class="social facebook"><i class="fab fa-facebook-f"></i><span>فيسبوك</span></a>
+<a href="https://www.linkedin.com/in/abdulaziz-mohamed-957a421b8" class="social linkedin"><i class="fab fa-linkedin-in"></i><span>لينكدإن</span></a>
+<a href="https://github.com/hafeth2009" class="social github"><i class="fab fa-github"></i><span>GitHub</span></a>
+</div>
+<p class="copyright">
+© <span id="year"></span> عبد العزيز حفظ الله<br>
+<small>جميع الحقوق محفوظة</small>
+</p>
+</div>
+</footer>
+
+<script>
+/* Theme */
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme',
+    document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('theme')==='dark'){
+  document.body.classList.add('dark');
+}
+
+/* Modal + Navigation */
+const images = Array.from(document.querySelectorAll('.cert-thumb'));
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+  img.onclick = () => {
+    currentIndex = index;
+    openModal();
+  };
+});
+
+function openModal() {
+  modal.style.display = 'block';
+  modalImg.src = images[currentIndex].src;
+  updateCounter();
+}
+
+function closeModal(e) {
+  if (e.target.id === 'modal' || e.target.classList.contains('close')) {
+    modal.style.display = 'none';
+  }
+}
+
+function nextImg(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % images.length;
+  openModal();
+}
+
+function prevImg(e) {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  openModal();
+}
+
+function updateCounter() {
+  document.getElementById('counter').textContent =
+    `${currentIndex + 1} / ${images.length}`;
+}
+
+/* Scroll Top */
+function scrollToTop(){
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* Year */
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
